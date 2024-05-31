@@ -1,8 +1,6 @@
 from time import sleep
 
-def gerar_matriz_Multi():
-    linhas = int(input("Defina o número de linhas para a multiplicação de matrizes: "))
-    colunas = int(input("Agora o número de colunas: "))
+def gerar_matriz_Multi(linhas, colunas):
     matrizmulti = []
     for i in range(linhas):
         linha = []
@@ -49,12 +47,15 @@ def gerar_matriz(linhas, colunas):
                     print(end="\n")
                     print(f"A matriz possui determinante e ele é {determinante}.")  
                 else:
+                    print(end="\n")
                     print("A matriz possui determinante.")   
             else:
                 print("A raiz não possui determinante.") 
         elif opcao == 2:
             print(end="\n")
-            matrizmulti = gerar_matriz_Multi()
+            linhasmulti = int(input("Defina o número de linhas para a multiplicação de matrizes: "))
+            colunasmulti = int(input("Agora o número de colunas: "))
+            matrizmulti = gerar_matriz_Multi(linhasmulti,colunasmulti)
             if len(matriz[0]) == len(matrizmulti):
                 print("A multiplicação é possível")
                 matrizmultiplicada = []
@@ -69,11 +70,32 @@ def gerar_matriz(linhas, colunas):
                     matrizmultiplicada.append(multilinha)
             
                 for i in range(linhas):
-                    print(matriz[i],"x",matrizmulti[i],"=",matrizmultiplicada[i])
+                    print(matriz[i])
+                print("x")
+                for i in range(linhasmulti):
+                    print(matrizmulti[i])
+                print("=")
+                for i in range(linhas):
+                    print(matrizmultiplicada[i])
             else:
                 print("A multiplicação é impossível")
         elif opcao == 3:
+            matriztrans = []
+            for i in range(colunas):
+                linhaT = []
+                for i in range(linhas):
+                    linhaT.append(0)
+                matriztrans.append(linhaT)
+            for i in range(colunas):
+                for j in range(linhas):
+                    matriztrans[i][j] = matriz[j][i]
+            for i in range(colunas):
+                print(matriztrans[i])
             print(end="\n")
+        elif opcao == 4:
+            print("saindo...")
+            sleep(1)
+            break
 
                 
                             
