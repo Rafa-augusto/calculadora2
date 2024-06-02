@@ -2,6 +2,8 @@ from time import sleep
 def conjuntos_numericos():
     A = []
     B = []
+    tempo1 = 0
+    tempo2 = 0
     while True:
         a = int(input("Selecione o número de itens para o conjunto A: "))
         b = int(input("Agora o número de itens para B: "))
@@ -15,7 +17,15 @@ def conjuntos_numericos():
         A.append(x) 
     for i in range(b):
         y = int(input("Digite o número para o subconjunto B: "))
-        B.append(y)     
+        B.append(y)   
+    while tempo1<len(A):
+                if A.count(A[tempo1])>1:
+                    A.remove(A[tempo1])
+                tempo1+=1
+    while tempo2<len(B):
+                if B.count(B[tempo2])>1:
+                    B.remove(B[tempo2])
+                tempo2+=1
     while True:
         sleep(0.5)
         print(end="\n")
@@ -54,10 +64,40 @@ def conjuntos_numericos():
             print(f"A união entre A e B é igual a {sorted(Uniao)}")
         elif opcao == 3:
             inter = []
-            inter.append(A)
-            inter.append(B)
-            
-
-
-
-conjuntos_numericos()
+            inter.extend(A)
+            inter.extend(B)
+            cont1 = 0
+            cont2 = 0
+            print(sorted(inter))
+            while cont1<len(inter):   
+                if inter.count(inter[cont1])==1:
+                    inter.remove(inter[cont1])
+                else:
+                    cont1+=1
+            while cont2<len(inter):
+                if inter.count(inter[cont2])>1:
+                    inter.remove(inter[cont2])
+                cont2+=1
+            print(f"A intersecção entre A e B é igual a {sorted(inter)}")
+        elif opcao == 4:
+            dif = []
+            dif.extend(A)
+            dif.extend(B)
+            dif.sort()
+            print(dif)
+            cont = 0
+            cont1 = 0
+            while cont<len(dif):
+                if dif.count(dif[cont])>1:
+                    dif.remove(dif[cont])
+                cont+=1
+            while cont1<len(dif):
+                for i in range(len(B)):
+                    if dif[cont1] == B[i]:
+                        dif.remove(dif[cont1])
+                cont1+=1
+            print(f"A diferença entre os conjuntos A e B é {sorted(dif)}")
+        elif opcao == 5:
+            print("Saindo..")
+            sleep(1)
+            break
