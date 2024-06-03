@@ -40,4 +40,8 @@ def fim():
     x=float(input("Insira o valor 'x' para descobrir o resultado: "))
     conta=calculo_da_funcao(x,a,b)
     print(f"f({x})= {conta}")
+<<<<<<< HEAD
     grafico(a,b)
+=======
+    grafico(a,b)
+>>>>>>> c1cb4710a799c5f9252a043644855d2243f35ebc
