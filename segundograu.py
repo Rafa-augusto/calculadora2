@@ -84,8 +84,4 @@ def finalização_de_tudo():
         else:
             print("Saindo...")
             sleep(1)
-<<<<<<< HEAD
             break
-=======
-            break
->>>>>>> c1cb4710a799c5f9252a043644855d2243f35ebc
