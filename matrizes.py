@@ -102,4 +102,4 @@ def gerar_matriz(linhas, colunas):
                 
 
 
-gerar_matriz(2,3)
+
