@@ -164,7 +164,7 @@ def gerar_matriz(linhas, colunas):
                 for i in range(linhas):
                     print(matrizmultiplicada[i])
             else:
-                print("A multiplicação é impossível")
+                print("A multiplicação é impossível\n\"nº de colunas da primeira matriz é diferente do nª de linhas da segunda matriz\"")
         elif opcao == 3:
             matriztrans = []
             for i in range(colunas):
@@ -197,12 +197,10 @@ def coeficientes():
 def calculo_da_funcao(x,a,b):
     f = a*(b**x)
     return f
-def verificação_da_expressao(a,b):
-    if b>1 and a>1:
+def verificação_da_expressao(b):
+    if b>1:
         return("A função é crescente")
-    elif b<1 or a<1:
-        return("A função é decrescente")
-    else:
+    elif b<1 and b>0:
         return("A função é decrescente")
 def grafico(a,b):
     x = linspace(-10,10,400)
@@ -217,13 +215,30 @@ def grafico(a,b):
     plt.axvline(x=0, color='k')
     plt.show()
 def fim():
+    print("Função Exponencial: f(x) = ab^x")
     a,b=coeficientes()
-    cres_decres= verificação_da_expressao(a,b)
-    print(f"A funçãoa é: {cres_decres}")
-    x=float(input("Insira o valor 'x' para descobrir o resultado: "))
-    conta=calculo_da_funcao(x,a,b)
-    print(f"f({x})= {conta}")
-
+    while True:
+        sleep(0.5)
+        print("-----|Menu|-----")
+        print("\n1. Apresentar se é crescente ou decrescente\n2. Calcular 'x' da fução exponencial\n3. Gerar Gráfico da Fução f(x)\n4.Sair")
+        op=int(input("Escolha o que quer ver: "))
+        if op<1 or op>4:
+            print("Essas opções não existem, tente novamente...")
+            continue
+        elif op==1:
+            cres_decres= verificação_da_expressao(b)
+            print(cres_decres)
+        elif op==2:
+            x=float(input("Insira o valor 'x' para descobrir o resultado: "))
+            conta=calculo_da_funcao(x,a,b)
+            print(f"f({x})= {conta}")
+        elif op==3:
+            print("Gerando Gráfico")
+            grafico(a,b)
+        else:
+            print("Saindo...")
+            sleep(1)
+            break
 def conjuntos_numericos():
     A = []
     B = []
@@ -293,7 +308,6 @@ def conjuntos_numericos():
             inter.extend(B)
             cont1 = 0
             cont2 = 0
-            print(sorted(inter))
             while cont1<len(inter):   
                 if inter.count(inter[cont1])==1:
                     inter.remove(inter[cont1])
@@ -309,7 +323,6 @@ def conjuntos_numericos():
             dif.extend(A)
             dif.extend(B)
             dif.sort()
-            print(dif)
             cont = 0
             cont1 = 0
             while cont<len(dif):
@@ -340,18 +353,14 @@ def menu():
             continue
         elif opcao==1:
             conjuntos_numericos()
-            continue
         elif opcao==2:
             finalização_de_tudo()
-            continue
         elif opcao==3:
             fim()
-            continue
         elif opcao==4:
             linhas = int(input("Digite o número de linhas para a matriz: "))
             colunas = int(input("Digite o número de colunas para a matriz: "))
             gerar_matriz(linhas,colunas)
-            continue
         else:
             print("Saindo...")
             break
