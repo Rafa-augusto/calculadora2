@@ -332,9 +332,9 @@ def conjuntos_numericos():
 
 
 def menu():
-    print("--Menu principal--\n1.Conjunto numéricos\n2.Funções de Segundo Grau\n3.Funções exponenciais\n4.Matrizes\n5.Sair")
-    opcao = int(input("Selecione uma opção: "))
     while True:
+        print("--Menu principal--\n1.Conjunto numéricos\n2.Funções de Segundo Grau\n3.Funções exponenciais\n4.Matrizes\n5.Sair")
+        opcao = int(input("Selecione uma opção: "))
         if opcao<1 or opcao>5:
             print("ERRO")
             continue
